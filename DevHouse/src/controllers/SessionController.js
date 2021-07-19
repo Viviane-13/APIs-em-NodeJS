@@ -1,4 +1,4 @@
-//metodos: index, show, update, store, destroy
+// metodos: index, show, update, store, destroy
 /*
   index: listagem de sessões
   store: criar uma sessão
@@ -7,25 +7,25 @@
   destroy: deletar uma sessão
 */
 
-import User from '../models/User';
-import * as Yup from 'yup';
-class SessionController{
-  
-  async store(req,res){
+import * as Yup from "yup";
+import User from "../models/User";
+
+class SessionController {
+  async store(req, res) {
     const schema = Yup.object().shape({
       email: Yup.string().email().required(),
     });
 
-    const {email} = req.body;
+    const { email } = req.body;
 
-    if(!(await schema.isValid(req.body))){
-      return res.status(400).json({error:'Falha na validação.'});
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: "Falha na validação." });
     }
-    //Verificando se esse usuário já existe
-    let user = await User.findOne({email});
+    // Verificando se esse usuário já existe
+    let user = await User.findOne({ email });
 
-    if(!user){
-      user  = await User.create({email});
+    if (!user) {
+      user = await User.create({ email });
     }
     return res.json(user);
   }
