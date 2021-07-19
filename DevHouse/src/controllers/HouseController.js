@@ -22,7 +22,7 @@ class HouseController {
     const { filename } = req.file;
     const { description, price, location, status } = req.body;
     const { user_id } = req.headers;
-    
+
     if(!(await schema.isValid(req.body))){
       return res.status(400).json({error:'Falha na validação.'});
     }
@@ -53,7 +53,7 @@ class HouseController {
     const { user_id } = req.headers;
 
     if(!(await schema.isValid(req.body))){
-      return res.status(400).json({error:'Falha na validação.'});
+      return res.status(400).json({error:'Falha na validação.' });
     }
 
     const user = await User.findById(user_id);
