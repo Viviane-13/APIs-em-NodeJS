@@ -7,8 +7,8 @@
   destroy: deletar uma sessão
 */
 
-import * as Yup from "yup";
-import User from "../models/User";
+import * as Yup from 'yup';
+import User from '../models/User';
 
 class SessionController {
   async store(req, res) {
@@ -19,7 +19,7 @@ class SessionController {
     const { email } = req.body;
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: "Falha na validação." });
+      return res.status(400).json({ error: 'Falha na validação.' });
     }
     // Verificando se esse usuário já existe
     let user = await User.findOne({ email });
