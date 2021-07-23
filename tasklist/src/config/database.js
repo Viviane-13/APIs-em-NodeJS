@@ -1,9 +1,9 @@
 require('dotenv').config();
 
-const account = {
-  dialect: process.env.DIALECT,
-  host: process.env.HOST,
-  username: process.env.USERNAME,
+module.exports = {
+  dialect: 'postgres',
+  host: 'localhost',
+  username: 'postgres',
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
   define: {
@@ -12,5 +12,3 @@ const account = {
     underscoredAll: true,
   },
 };
-
-export default account;
